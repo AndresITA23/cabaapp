@@ -1,12 +1,12 @@
 import { Center, ButtonText, ButtonGroup, Icon, AddIcon, InfoIcon, ButtonSpinner, ArrowUpIcon, HStack, ThreeDotsIcon, Input, InputField, Avatar, Link } from '@gluestack-ui/themed';
 import { AvatarImage, TextareaInput, Box, Text, ButtonIcon, Button, ChevronLeftIcon, FavouriteIcon, Image, ShareIcon, Heading, View, ScrollView, VStack, Textarea } from "@gluestack-ui/themed";
 import { useNavigation } from '@react-navigation/native';
-import React from "react";
+import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { Rating, AirbnbRating } from 'react-native-ratings';
 import Carousel from "pinar";
-import { StyleSheet } from "react-native";
-import { Clock, MapPinned } from 'lucide-react-native';
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Clock, MapPinned, SendHorizonal } from 'lucide-react-native';
 const styles = StyleSheet.create({
     slide1: {
         height: 360,
@@ -36,9 +36,27 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     }
 });
+
 const Publication = () => {
     const navigation = useNavigation();
-    return <VStack flex={1}>
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
+
+    const isButtonDisabled = rating === 0 || comment.trim() === "";
+
+    const handleRatingChange = (ratingValue: number) => {
+        setRating(ratingValue);
+    };
+
+    const handleCommentChange = (text: string) => {
+        setComment(text);
+    };
+
+    const handleSubmit = () => {
+        // Aquí puedes agregar lógica para enviar el comentario
+    };
+
+    return <VStack flex={1} bg='white'>
         <ScrollView>
             {/* Image/return/like/share */}
             <Box h={360} w={390}>
@@ -80,7 +98,7 @@ const Publication = () => {
 
                 {/* IconLocation/TextLink */}
                 <Box mx={16} marginTop={-6} flexDirection='row' alignItems='center'>
-                    <MapPinned size={30} color="#BFA27E"/>
+                    <MapPinned size={30} color="#BFA27E" />
                     <Text ml={2} fontWeight="$light" fontSize={14}> BaseDate - Direction Map</Text>
                     <Text position='absolute' right={0} color="#1A91FF">(X Reviews)</Text>
                 </Box>
@@ -168,33 +186,46 @@ const Publication = () => {
                 <Box mx={16} my={16} marginTop={0}>
                     <Text color="#000000" fontSize={18} fontWeight="$semibold">Schedules</Text>
                     <Box flexDirection="row" marginTop={10} alignItems='center'>
-                        <Clock size={24} color="#BFA27E"/>
+                        <Clock size={24} color="#BFA27E" />
                         <Text ml={5} fontSize={16} >24 Horas (10:00am - 10:00am) </Text>
                     </Box>
                 </Box>
 
-                {/* Opinions */}
+                {/* Rating */}
                 <Box mx={16} my={16} marginTop={0}>
-                    <Text color="#333333" fontSize={18} fontWeight="$semibold">Opinions</Text>
-                    <Box marginTop={5}>
+                    <Text color="#333333" fontSize={18} fontWeight="$semibold">Rating</Text>
+                    <Box marginTop={10}>
                         <Text fontWeight="$bold" color="#EBC351" size="4xl">5.0</Text>
                         <Image w={100} h={20} top={5} source={require('../../assets/Stars.png')} />
                     </Box>
-                    <Box marginTop={10} alignItems="center">
-                        <Text color="#333333" fontSize={18} fontWeight="$semibold">Write your opinion</Text>
-                        <AirbnbRating reviews={["1", "2", "3", "4", "5"]} count={5} defaultRating={0} size={30} />
-                        <Textarea marginTop={10} size="md" isReadOnly={false} isInvalid={true} isDisabled={false}>
-                            <TextareaInput placeholder="Your text goes here..." />
-                        </Textarea>
+                </Box>
 
-                        <Button marginTop={10} backgroundColor='#BFA27E' size={"lg"} isDisabled={false}>
-                            <ButtonText>Send</ButtonText>
-                        </Button>
+                {/* Write your comment */}
+                <Box mx={16} my={16} >
+                    <Text color="#333333" fontSize={18} fontWeight="$semibold" >Write your opinion</Text>
+                    <AirbnbRating reviews={["1", "2", "3", "4", "5"]} count={5} defaultRating={0} size={30}
+                                  onFinishRating={handleRatingChange} />
+                    
+                    <Textarea borderRadius={10} marginTop={16} isReadOnly={false} isInvalid={true} isDisabled={false}>
+                        <TextareaInput placeholder="Write your opinion..."
+                                       value={comment}
+                                       onChangeText={handleCommentChange} />
+                    </Textarea>
+                    
+                    <Box mt={16}>
+                        <Box  position="absolute" right={0}>
+                            <TouchableOpacity style={{borderRadius:20, padding:10, paddingHorizontal:16, flexDirection:"row", justifyContent:"center", alignItems:"center", backgroundColor: isButtonDisabled ? 'rgba(191, 162, 126, 0.5)' : '#BFA27E'}}
+                                    onPress={handleSubmit}
+                                    disabled={isButtonDisabled}>
+                                <Text pr={6} fontSize={18} fontWeight="$medium" color='white'>Send</Text>
+                                <SendHorizonal color="white" size={18}></SendHorizonal>
+                            </TouchableOpacity>
+                        </Box>
                     </Box>
                 </Box>
 
                 {/* Coments */}
-                <Box mx={16} my={16} marginTop={0}>
+                <Box mx={16} my={16} mt={32}>
                     <Text color="#000000" fontSize={18} fontWeight="$semibold">Coments</Text>
                     <Box marginTop={15}>
                         <Box flexDirection='row' justifyContent='space-between'>
