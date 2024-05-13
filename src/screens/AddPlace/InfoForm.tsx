@@ -23,7 +23,7 @@ const InfoForm = (props) => {
 
   const onOpenCloseMap = () => {
     setShowModal(!showModal);
-  };
+  }; 
 
   return (
     <>

@@ -16,7 +16,7 @@ const SettingsStack = () => {
             headerShown: false,
             }}
             ></Stack.Screen>
-            <Stack.Screen name={screen.settings.addPlace} component={AddPlace}></Stack.Screen>
+            <Stack.Screen name={screen.settings.addPlace} component={AddPlace} options={{presentation:'fullScreenModal'}}></Stack.Screen>
         </Stack.Navigator>
     )
 };
