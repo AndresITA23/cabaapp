@@ -159,7 +159,7 @@ const Addplace2 = () => {
     const saveLocation = () => {
         console.log(location);
         formik.setFieldValue("location", location)
-        setOpenCard(4);
+        setOpenCard(5);
     };
 
     const [name, setName] = useState('');
@@ -236,11 +236,11 @@ const Addplace2 = () => {
 
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="0%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="0%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0}>
                             <Box position="absolute" top={20} right={24} >
-                                <TouchableOpacity style={styles.buttonNext } onPress={saveName} disabled={!name.trim()}>
+                                <TouchableOpacity style={styles.buttonNext } onPress={saveName} >
                                     <Text style={styles.buttonNextText}>Next</Text>
                                 </TouchableOpacity>
                             </Box>
@@ -282,7 +282,7 @@ const Addplace2 = () => {
 
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="16.67%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="16.67%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0}>
                             <Box position="absolute" top={20} left={24}>
@@ -311,7 +311,7 @@ const Addplace2 = () => {
                             <Text style={styles.subText}>Enter the address where your place is located.</Text>
                         </Box>
 
-                        <FormControl isInvalid={false} isDisabled={false} isRequired={true} mx={16} my={64}  >
+                        <FormControl isInvalid={false} isDisabled={false} isRequired={true} mx={16} my={40}  >
                             <Box flexDirection="row" alignItems="center" >
                                 <MapPinnedIcon size={24} color={isFocused ? "#BFA27E" : "#A9A9A9"} />
                                 <TextInput
@@ -326,7 +326,7 @@ const Addplace2 = () => {
                             </Box>
 
                             <FormControlHelper>
-                                <FormControlHelperText color="red">
+                                <FormControlHelperText color="red" mt={16}>
                                     {formik.errors.address}
                                 </FormControlHelperText>
                             </FormControlHelper>
@@ -334,7 +334,7 @@ const Addplace2 = () => {
 
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="33.33%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="33.33%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0}>
                             <Box position="absolute" top={20} left={24}>
@@ -363,7 +363,7 @@ const Addplace2 = () => {
                             <Text style={styles.subText}>Enter the exact address of your place.</Text>
                         </Box>
                         {/* InformationAddress */}
-                        <Box my={16}>
+                        <Box my={16} >
                             <MapView
                                 initialRegion={location}
                                 showsUserLocation={true}
@@ -386,7 +386,7 @@ const Addplace2 = () => {
                         </Box>
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="50%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="50%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0} bg="white">
                             <Box position="absolute" top={20} left={24}>
@@ -405,7 +405,7 @@ const Addplace2 = () => {
             )}
 
             {/* TimePlace */}
-            {openCard === 4 && (
+            {/* {openCard === 4 && (
                 <>
                     <VStack flex={1} backgroundColor="white">
                         <Box mx={16} mt={38}>
@@ -443,7 +443,7 @@ const Addplace2 = () => {
 
                                 <Box top={10} flexDirection="row" alignItems="center">
                                     <Box backgroundColor="#D9D9D9" h="100%" paddingHorizontal={5} alignItems="center" justifyContent="center" borderBottomLeftRadius={10} borderTopLeftRadius={10}>
-                                        <Clock color="#a9a9a9" size={26} ></Clock>
+                                        <Clock color="#a9a9a9a" size={26} ></Clock>
                                     </Box>
                                     <TouchableOpacity style={styles.buttonTime} onPress={showEndTimePicker}>
                                         <Text color="black" fontSize={18}>{endTime ? endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "End hour"}</Text>
@@ -462,7 +462,7 @@ const Addplace2 = () => {
                         <Box mx={64} top={50} alignItems="center" borderRadius={30} borderWidth={1} borderColor="#646464" padding={10}>
                             <Text fontSize={18} fontWeight="$medium">{duration !== null ? `Range: ${duration} hours` : ""}</Text>
                         </Box>
-                        {/* Footer */}
+                        
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
                             <Box w="66.67%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
@@ -481,6 +481,7 @@ const Addplace2 = () => {
                     </VStack>
                 </>
             )}
+             */}
 
             {/* PricePlace */}
             {openCard === 5 && (
@@ -520,11 +521,11 @@ const Addplace2 = () => {
                         </Box>
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="83.33%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="66.67%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0}>
                             <Box position="absolute" top={20} left={24}>
-                                <TouchableOpacity style={styles.buttonBack} onPress={() => setOpenCard(4)}>
+                                <TouchableOpacity style={styles.buttonBack} onPress={() => setOpenCard(3)}>
                                     <Text style={styles.buttonBackText}>Back</Text>
                                 </TouchableOpacity>
                             </Box>
@@ -596,7 +597,7 @@ const Addplace2 = () => {
 
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="100%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="83.33%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0} >
                             <Box position="absolute" top={20} left={24}>
@@ -630,7 +631,7 @@ const Addplace2 = () => {
 
                         {/* Footer */}
                         <Box w="100%" position="absolute" bottom={121} h={5} backgroundColor="#D9D9D9">
-                            <Box w="100%" h={5} bg="black" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
+                            <Box w="100%" h={5} bg="#BFA27E" borderTopRightRadius={20} borderBottomEndRadius={20}></Box>
                         </Box>
                         <Box w="100%" h={120} position="absolute" bottom={0} >
                             <Box position="absolute" top={20} left={24}>
