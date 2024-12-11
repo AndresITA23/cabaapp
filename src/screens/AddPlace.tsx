@@ -328,7 +328,7 @@ const Addplace2 = () => {
                                         shadowColor: "black", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.25, shadowRadius: 4, elevation: 8
                                     }}>
                                         <MapPin size={18} color="black"></MapPin>
-                                        <Text pl={6} color="black" fontSize={18} fontWeight="$normal">Get into your address...</Text>
+                                        <Text pl={6} color="black" fontSize={18} fontWeight="$normal">Get into your address</Text>
                                     </TouchableOpacity>
                                 </Box>
                             </Box>
